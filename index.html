@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRD: сайт риэлтора в Астане — визуализация</title>
+<style>
+:root{--navy:#14213d;--navy2:#1d2f55;--gold:#b8924a;--bg:#faf8f4;--card:#fff;--text:#222a38;--muted:#5b6475;--line:#e5e0d5;--ok:#1f7a4d;--no:#b3261e;--soft:#f3ecde}
+@media(prefers-color-scheme:dark){:root{--bg:#10151f;--card:#1a2232;--text:#e6e9f0;--muted:#9aa4b8;--line:#2b3550;--soft:#262c3b;--navy:#e6e9f0}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Georgia,serif;line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.4rem,3vw,1.9rem);color:var(--navy)}
+section{padding:48px 0}
+.hero{background:linear-gradient(120deg,#14213d,#1d2f55);color:#fff;padding:64px 0 48px}
+.hero h1{font-size:clamp(1.9rem,5vw,3rem);max-width:800px;color:#fff}
+.hero p{color:#d5dae6;max-width:680px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tag{border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:3px 14px;font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card h3{font-size:1.05rem;color:var(--navy);margin-bottom:.3em}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.ic{font-size:1.6rem;margin-bottom:6px}
+/* flow map */
+.map{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.node{flex:1 1 120px;min-width:120px;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:10px;padding:12px;text-align:center;font-size:.9rem}
+.node b{display:block;color:var(--navy);font-size:.78rem;opacity:.7}
+.node.top{border-top-color:var(--navy2);flex-basis:100%;background:var(--navy2);color:#fff}
+.node.top b{color:#fff}
+/* scope */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.two{grid-template-columns:1fr}}
+ul.l{margin:0;padding:0;list-style:none}
+ul.l li{padding:6px 0 6px 26px;position:relative;border-bottom:1px solid var(--line);font-size:.94rem}
+ul.l li:last-child{border:0}
+.yes li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.no li::before{content:"✕";position:absolute;left:0;color:var(--no);font-weight:700}
+/* funnel */
+.funnel{display:flex;flex-direction:column;align-items:center;gap:6px}
+.fl{padding:12px;text-align:center;color:#fff;border-radius:8px;font-weight:600;font-size:.95rem}
+/* timeline */
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:3px solid var(--gold)}
+.tl li{position:relative;padding:0 0 18px 18px}
+.tl li::before{content:"";position:absolute;left:-30px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--bg)}
+.tl b{color:var(--navy)}
+.tl span{display:block;color:var(--muted);font-size:.92rem}
+/* tables */
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:.92rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--soft);color:var(--navy)}
+.badge{display:inline-block;padding:1px 9px;border-radius:99px;font-size:.78rem;font-weight:600}
+.req{background:#fde8e6;color:var(--no)}.opt{background:var(--soft);color:var(--muted)}
+.alt{background:var(--soft)}
+.q{counter-reset:q}.q li{counter-increment:q;padding:10px 0 10px 40px;position:relative;border-bottom:1px solid var(--line)}
+.q li::before{content:counter(q);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#14213d;display:grid;place-items:center;font-weight:700;font-size:.85rem}
+footer{padding:28px 0;text-align:center;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <p style="margin:0 0 8px;opacity:.8">PRD v1.0 · 02.10.2026 · Черновик</p>
+  <h1>Сайт частного риэлтора в Астане для инвесторов</h1>
+  <p>«Недвижимость в Астане, которая сохранит ваш капитал». Независимый эксперт: проверяет застройщика, документы и цену, сопровождает сделку и аренду. Тон — дружелюбный, но экспертный.</p>
+  <div class="tags"><span class="tag">RU · KZ · EN</span><span class="tag">8 разделов</span><span class="tag">Форма + мессенджеры</span><span class="tag">Mobile-first</span></div>
+</div></header>
+
+<section><div class="wrap">
+  <h2>Проблема и цели</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">🧩</div><h3>Проблема</h3><p>Инвесторы из других городов и стран не могут сами оценить, какая квартира сохранит стоимость и ликвидность. Нужен независимый специалист.</p></div>
+    <div class="card"><div class="ic">🎯</div><h3>Бизнес-цели</h3><p>Заявки через сайт и мессенджеры; доверие и экспертный образ; клиенты из других городов и из-за рубежа.</p></div>
+    <div class="card"><div class="ic">🙋</div><h3>Цели пользователя</h3><p>Понять, чем риэлтор отличается от агентств; убедиться в надёжности; легко оставить заявку.</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Воронка и метрики успеха</h2>
+  <div class="two">
+    <div class="funnel">
+      <div class="fl" style="background:#14213d;width:100%">Посетитель сайта</div>
+      <div class="fl" style="background:#1d2f55;width:82%">Увидел УТП, дочитал до формы</div>
+      <div class="fl" style="background:#7a6030;width:62%">Клик по мессенджеру / телефону</div>
+      <div class="fl" style="background:#b8924a;color:#14213d;width:44%">Заявка</div>
+    </div>
+    <table>
+      <tr><th>Метрика</th><th>Цель</th></tr>
+      <tr><td>Конверсия в заявку</td><td>[X]%</td></tr>
+      <tr><td>Заявок в месяц</td><td>[N]</td></tr>
+      <tr><td>Доля иногородних / иностранных</td><td>[X]%</td></tr>
+      <tr><td>Отказы на главной</td><td>&lt; [X]%</td></tr>
+      <tr><td>Время на сайте</td><td>&gt; [N] мин</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Целевая аудитория</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">💼</div><h3>Предприниматели</h3><p>Свободный капитал, защита от инфляции. Нужен надёжный актив с минимумом рисков.</p></div>
+    <div class="card"><div class="ic">🚆</div><h3>Из других городов</h3><p>Переезжают или инвестируют в столицу. Нужно знание районов и проверка объектов.</p></div>
+    <div class="card"><div class="ic">🌍</div><h3>Казахстанцы за рубежом</h3><p>Хотят вложиться на родине. Нужны удалённая сделка и управление арендой.</p></div>
+    <div class="card"><div class="ic">🧳</div><h3>Иностранные инвесторы</h3><p>Изучают рынок Казахстана. Нужны понятный порядок покупки и англоязычный сервис.</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Карта сайта</h2>
+  <div class="map">
+    <div class="node top"><b>0 · ШАПКА</b>Логотип · меню · переключатель RU/KZ/EN · WhatsApp-кнопка (моб.)</div>
+    <div class="node"><b>6.1</b>🏠 Главная<br><small>H1 · 2 CTA · 4 факта</small></div>
+    <div class="node"><b>6.2</b>🛠️ Услуги<br><small>5 карточек</small></div>
+    <div class="node"><b>6.3</b>🏙️ Почему Астана<br><small>3 преимущества</small></div>
+    <div class="node"><b>6.4</b>🪜 Как я работаю<br><small>6 шагов</small></div>
+    <div class="node"><b>6.5</b>👤 Обо мне<br><small>3 абзаца + сертификаты</small></div>
+    <div class="node"><b>6.6</b>⭐ Отзывы<br><small>3–5 реальных</small></div>
+    <div class="node"><b>6.7</b>❓ FAQ<br><small>5 вопросов, аккордеон</small></div>
+    <div class="node"><b>6.8</b>📞 Контакты<br><small>контакты + форма</small></div>
+  </div>
+  <h3 style="margin-top:32px">Услуги</h3>
+  <div class="map">
+    <div class="node">🏗️ Подбор новостроек</div><div class="node">🏢 Вторичное жильё</div><div class="node">🔑 Аренда и управление</div><div class="node">📈 Инвест-консультация</div><div class="node">📑 Сопровождение сделки</div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Как я работаю — путь клиента</h2>
+  <ol class="tl">
+    <li><b>1. Знакомство <span style="display:inline;color:var(--gold);font-weight:700">· бесплатно</span></b><span>Цели, сроки, бюджет</span></li>
+    <li><b>2. Стратегия</b><span>Тип жилья, район, доходность</span></li>
+    <li><b>3. Подборка</b><span>Проверенные варианты со сравнением</span></li>
+    <li><b>4. Просмотры</b><span>Лично или онлайн</span></li>
+    <li><b>5. Проверка и сделка</b><span>Документы, застройщик, оформление</span></li>
+    <li><b>6. После покупки</b><span>Ремонт, аренда, управление</span></li>
+  </ol>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Объём MVP</h2>
+  <div class="two">
+    <div class="card"><h3>Входит</h3><ul class="l yes">
+      <li>Сайт на RU, KZ, EN</li><li>8 разделов</li><li>Форма заявки</li><li>WhatsApp / Telegram / телефон</li><li>Адаптивная вёрстка</li><li>Базовое SEO и аналитика</li></ul></div>
+    <div class="card"><h3>Не входит</h3><ul class="l no">
+      <li>Каталог объектов с фильтрами и БД</li><li>Личный кабинет</li><li>Онлайн-оплата</li><li>Калькулятор доходности (v2)</li><li>Блог и статьи (v2)</li></ul></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Форма заявки</h2>
+  <table>
+    <tr><th>Поле</th><th>Тип</th><th>Статус</th></tr>
+    <tr><td>Имя</td><td>Текст</td><td><span class="badge req">обязательно</span></td></tr>
+    <tr><td>Телефон</td><td>Маска +7</td><td><span class="badge req">обязательно</span></td></tr>
+    <tr><td>Цель</td><td>Сохранить капитал / сдавать / перепродать</td><td><span class="badge opt">нет</span></td></tr>
+    <tr><td>Бюджет</td><td>Диапазон или текст</td><td><span class="badge opt">нет</span></td></tr>
+    <tr><td>Способ связи</td><td>Звонок / WhatsApp / Telegram / email</td><td><span class="badge req">обязательно</span></td></tr>
+    <tr><td>Согласие на ПД</td><td>Чекбокс</td><td><span class="badge req">обязательно</span></td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:.92rem">Валидация с понятными ошибками · сообщение «Спасибо! Отвечу в течение [N часов]» · антиспам скрытым полем (без капчи) · заявка уходит в [Telegram / email / CRM].</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Мультиязычность и требования</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">🌐</div><h3>Языки</h3><p>RU (по умолчанию), KZ, EN. Отдельные URL /ru/ /kz/ /en/, hreflang, переключатель в шапке. KZ и EN вычитывает носитель.</p></div>
+    <div class="card"><div class="ic">📱</div><h3>Адаптивность</h3><p>От 360 до 1920 px. Первый экран виден без прокрутки.</p></div>
+    <div class="card"><div class="ic">⚡</div><h3>Скорость</h3><p>Первый экран &lt; 2,5 с на мобильном 4G.</p></div>
+    <div class="card"><div class="ic">🔎</div><h3>SEO</h3><p>Уникальные title/description на язык; разметка RealEstateAgent и FAQPage.</p></div>
+    <div class="card"><div class="ic">♿</div><h3>Доступность</h3><p>Контраст WCAG AA, alt-тексты.</p></div>
+    <div class="card"><div class="ic">📊</div><h3>Аналитика и безопасность</h3><p>GA / Метрика, цели на форму и мессенджеры. HTTPS, защита от спама.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Дизайн</h2>
+  <div class="grid">
+    <div class="card"><h3>Стиль</h3><p>Спокойный, премиальный, вызывает доверие. Реальные фото риэлтора и Астаны, без стоковых «счастливых семей».</p></div>
+    <div class="card"><h3>Палитра</h3>
+      <div style="display:flex;gap:8px;margin-top:8px"><span style="width:44px;height:44px;border-radius:8px;background:#14213d"></span><span style="width:44px;height:44px;border-radius:8px;background:#1d2f55"></span><span style="width:44px;height:44px;border-radius:8px;background:#b8924a"></span><span style="width:44px;height:44px;border-radius:8px;background:#faf8f4;border:1px solid var(--line)"></span></div>
+      <p style="margin-top:8px">Предложение: тёмно-синий + золото (в PRD не задана).</p></div>
+    <div class="card"><h3>Мобильная версия</h3><p>Кнопка WhatsApp закреплена в углу экрана.</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>План запуска</h2>
+  <ol class="tl">
+    <li><b>1. Контент</b><span>Данные по разделу 10, вычитка переводов</span></li>
+    <li><b>2. Дизайн</b><span>Макеты десктоп и мобильной версии</span></li>
+    <li><b>3. Разработка</b><span>Вёрстка, форма, мультиязычность</span></li>
+    <li><b>4. Тестирование</b><span>Форма, адаптивность, скорость</span></li>
+    <li><b>5. Запуск</b><span>Публикация, аналитика</span></li>
+    <li><b>6. Следующая версия</b><span>Калькулятор доходности, блог</span></li>
+  </ol>
+  <p style="color:var(--muted)">Сроки в PRD: [дата] — не заполнены.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="two">
+    <div><h2>Нужно предоставить</h2>
+      <ul class="l"><li>Имя и фото риэлтора</li><li>Годы опыта и число сделок</li><li>Условия и комиссия</li><li>Минимальный бюджет</li><li>Контакты (тел., WhatsApp, Telegram, email, Instagram, адрес)</li><li>Срок ответа на заявку</li><li>3–5 отзывов клиентов</li><li>Образование и сертификаты</li><li>Фото Астаны и объектов</li><li>Вычитка KZ и EN</li></ul></div>
+    <div><h2>Открытые вопросы</h2>
+      <ol class="l q" style="padding:0">
+        <li>Подтвердить независимость от застройщиков (бонусы)</li>
+        <li>Платформа сайта?</li>
+        <li>Куда приходят заявки?</li>
+        <li>Нужен ли домен .kz?</li>
+        <li>Планируется ли каталог объектов?</li></ol></div>
+  </div>
+</div></section>
+
+<footer>Визуализация PRD «Сайт частного риэлтора в Астане» · v1.0 · 02.10.2026</footer>
+</body>
+</html>
